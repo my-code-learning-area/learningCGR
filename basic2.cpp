@@ -22,10 +22,13 @@ void dda(float x1, float y1, float x2, float y2) {
 	} else if(m > 1.0 && x1 < x2) {
 		xinc = -(1.0 / m);
 		yinc = -1.0;
-	} else {
+	} else if(m == 1 && x1 < x2 ) {
 		xinc = 1.0;
 		yinc = 1.0;
-	} 
+	} else {
+        xinc = -1.0;
+        yinc = -1.0;
+    }
 
     while (round(x) != x2 && round(y) != y2) { 
         glVertex2i(round(x),round(y)); //printing pixel
@@ -53,12 +56,25 @@ void renderFunction() {
 
     glColor3f(1.0, 0.0, 1.0);	
     glBegin(0);
-	    dda(100, 100, 200, 200); //1
-	    dda(-100, 100, -200, 200); //2
+	    dda(200, 200, 100, 100); //1
+	    dda(-200, 200, -100, 100); //2
 	    dda(-200, -200, -100, -100); //3
         dda(200, -200, 100, -100); //3
-
     glEnd();
+
+    glPointSize(3.0);					// adjusting the size of pixel
+    glColor3f(1.0, 0.0, 0.0);	
+    glBegin(0);
+        glVertex2f(200, 200);
+        glVertex2f(100, 100); //1
+	    glVertex2f(-200, 200);
+        glVertex2f(-100, 100); //2
+	    glVertex2f(-200, -200);
+        glVertex2f(-100, -100); //3
+        glVertex2f(200, -200);
+        glVertex2f(100, -100); //3
+    glEnd();
+
 
     glFlush();						// flush frame buffers
 }
