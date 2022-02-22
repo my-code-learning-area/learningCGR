@@ -15,7 +15,10 @@ void ddaFunction() {
 	float xinc, yinc;
 
 	//setting xinc and yinc
-	if(m < 1.0 && x1 < x2) {
+	if(dx == 0) {
+        xinc = 0.0;
+        yinc = 1.0;
+    } else if(m < 1.0 && x1 < x2) {
 		xinc = 1.0;
 		yinc = m;
 	} else if(m < 1.0 && x1 > x2) { // if points are high to low
@@ -27,17 +30,22 @@ void ddaFunction() {
 	} else if(m > 1.0 && x1 < x2) {
 		xinc = -(1.0 / m);
 		yinc = -1.0;
-	} else {
+	} else if(m == 1 && x1 < x2 ) {
 		xinc = 1.0;
 		yinc = 1.0;
-	} 
+	} else {
+        xinc = -1.0;
+        yinc = -1.0;
+    }
+
 
 	glBegin(GL_POINTS); // opengl draw pixel
 		// incrementing and previous pixel to get next pixel
 		cout<<endl<<endl<<"=================================================================================================================================="<<endl;
 		cout<<"(xn,yn) - incremented	|	plot (x, y) - rounded	|	slope = m	|	x-increment	|	y-increment  "<<endl;
 		cout<<"----------------------------------------------------------------------------------------------------------------------------------"<<endl;
-		while (round(x) != x2 && round(y) != y2) { 
+		while (round(x) <= x2 && round(y) <= y2) { 
+
 			cout<<"(x,y)=("<<x<<","<<y<<");\t|\t"<<"(r(x),r(y))=("<<round(x)<<","<<round(y)<<");\t|\t"<<"m="<<m<<";\t|\t"<<"xinc="<<xinc<<";\t|\t"<<"yinc="<<yinc<<endl;
 			glVertex2i(round(x),round(y)); //printing pixel
 			x += xinc;

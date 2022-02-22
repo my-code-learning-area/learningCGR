@@ -10,7 +10,10 @@ void dda(float x1, float y1, float x2, float y2) {
 	float xinc, yinc;
 
 	//setting xinc and yinc
-	if(m < 1.0 && x1 < x2) {
+    if(dx == 0) {
+        xinc = 0.0;
+        yinc = 1.0;
+    } else if(m < 1.0 && x1 < x2) {
 		xinc = 1.0;
 		yinc = m;
 	} else if(m < 1.0 && x1 > x2) { // if points are high to low
@@ -30,7 +33,7 @@ void dda(float x1, float y1, float x2, float y2) {
         yinc = -1.0;
     }
 
-    while (round(x) != x2 && round(y) != y2) { 
+    while (round(x) <= x2 && round(y) <= y2) { 
         glVertex2i(round(x),round(y)); //printing pixel
         x += xinc;
         y += yinc;
@@ -74,7 +77,6 @@ void renderFunction() {
         glVertex2f(200, -200);
         glVertex2f(100, -100); //3
     glEnd();
-
 
     glFlush();						// flush frame buffers
 }
