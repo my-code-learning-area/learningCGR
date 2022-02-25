@@ -55,11 +55,11 @@ void display() {
         int i = 1, s = -1, e = 21;
 
         glColor3d(0.0, 0.0, 0.0); // for drawing x and y axis
-        glVertex2d(e - 0.5, 0);
-        glVertex2d(s - 0.5, 0);
+        glVertex2d(e, 0-.5);
+        glVertex2d(s, 0-.5);
 
-        glVertex2d(0, e - 0.5);
-        glVertex2d(0, s - 0.5);
+        glVertex2d(0-.5, e);
+        glVertex2d(0-.5, s);
 
         //////////////////////////////////////////////////
 
