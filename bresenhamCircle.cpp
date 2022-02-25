@@ -27,15 +27,19 @@ void drawCircle(double x, double y, double radious) {
             temp += 0.1;
         }
         glColor3d(temp, 0, temp - 0.2);
+        // 1st quadrant
         glVertex2d(round(x), round(y));
         glVertex2d(round(y), round(x));
 
+        // 4th quadrant
         glVertex2d(round(y), round(-x));
         glVertex2d(round(x), round(-y));
 
+        // 3rd quadrant
         glVertex2d(round(-y), round(-x));
         glVertex2d(round(-x), round(-y));
 
+        // 2nd quadrant
         glVertex2d(round(-y), round(x));
         glVertex2d(round(-x), round(y));
     }
