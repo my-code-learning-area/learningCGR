@@ -16,7 +16,7 @@ void dda(float x1, float y1, float x2, float y2) {
     } else if(m < 1.0 && x1 < x2) {
 		xinc = 1.0;
 		yinc = m;
-	} else if(m < 1.0 && x1 > x2) { // if points are high to low
+    } else if(m < 1.0 && x1 > x2) { // if points are high to low
 		xinc = -1.0;
 		yinc = -m;
 	} else if(m > 1.0 && x1 > x2) {
