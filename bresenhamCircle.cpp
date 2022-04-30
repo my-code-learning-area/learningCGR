@@ -81,7 +81,7 @@ void display() {
 
     glColor3d(1.0, 0.7, 0.2);
     glBegin(GL_POINTS);
-        drawCircle(0, 0, 7);
+        drawCircle(0, 0, 20);
     glEnd();
     glFlush();
 }

@@ -13,7 +13,7 @@
 using namespace std;
 
 //Defalut radius of circle 
-int cx=300,cy=300,R=70; bool flag=1;
+int cx=300,cy=300,R=70; bool f=1;
 
 //Color struct
 struct color
@@ -140,7 +140,7 @@ if(flag&&button==GLUT_LEFT_BUTTON && state==GLUT_DOWN)
 	glPointSize(5.0);
 	glColor3f(1,0,0);
 	glBegin(GL_POINTS);
-	glVertex2i(x,600-y);
+		glVertex2i(x,600-y);
 	glEnd();
 	glFlush();	
 	flag=0;
@@ -200,10 +200,10 @@ int main(int argc,char** argv)
 	glutDisplayFunc(draw);
 	
 	glutCreateMenu(menu);
-	glutAddMenuEntry("Draw",1);
-	glutAddMenuEntry("Clear",2);
-	glutAddMenuEntry("Color Fill",3);
-	glutAddMenuEntry("Exit",4);
+		glutAddMenuEntry("Draw",1);
+		glutAddMenuEntry("Clear",2);
+		glutAddMenuEntry("Color Fill",3);
+		glutAddMenuEntry("Exit",4);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 	glutMouseFunc(mouseClick);
 	
