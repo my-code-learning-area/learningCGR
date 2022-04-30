@@ -1,6 +1,6 @@
 # learningCGR
 
+## Notes
+> syntax to compile and run program
 
-compile and run
-
-```sudo g++ filename.cpp -o filename -lglut -lGL -lGLEW -lGLU; ./filename```
+    sudo g++ filename.cpp -o filename -lglut -lGL -lGLEW -lGLU; ./filename
