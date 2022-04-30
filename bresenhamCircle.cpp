@@ -46,7 +46,7 @@ void drawCircle(double x, double y, double radious) {
 }
 
 void display() {
-    double start = -21.0, end = 21.0;
+    double start = -31.0, end = 31.0;
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
@@ -81,7 +81,7 @@ void display() {
 
     glColor3d(1.0, 0.7, 0.2);
     glBegin(GL_POINTS);
-        drawCircle(0, 0, 10);
+        drawCircle(0, 0, 7);
     glEnd();
     glFlush();
 }
@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_RGB);
 
     glutInitWindowPosition(200, 100);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(900, 900);
 
     glutCreateWindow("Circal generation using Bresenham algorithm");
 

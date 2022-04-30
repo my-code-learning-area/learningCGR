@@ -1,9 +1,17 @@
+/** //// DDA ////
+* name:   sumit uttamrao kawale
+* rollno: 23358
+* class:  se-11
+* batch:  g-11
+*
+**/
 #include<GL/glut.h> 
 #include<math.h>
 #include<iostream>
 using namespace std;
 
-void dda(int x1, int y1, int x2, int y2) {
+void dda(int x1, int y1, int x2, int y2, int type) {
+    // type = 1 (simple line); 2 = (dashed line); 3 = (dotted line)
     double dx = x2 - x1;
     double dy = y2 - y1;
     double m = abs(dy / dx);
@@ -35,8 +43,27 @@ void dda(int x1, int y1, int x2, int y2) {
     }
     cout<<"dy = "<<dy<<endl<<"dx = "<<dx<<endl<<"m = "<<m<<endl<<"(xinc, yinc) = ("<<xinc<<", "<<yinc<<")"<<endl;
 
+    int countDot = 1;
     for(int i = 0; i < (abs(dx) > abs(dy) ? abs(dx) : abs(dy)); i++) {
-        glVertex2d(round(x), round(y));
+        if (type == 2){ // dashed
+            if(countDot < 3) {
+                glVertex2d(round(x), round(y));
+                countDot++;
+            } else if(countDot < 5) {
+                countDot++;
+            } else {
+                countDot = 0;
+            }
+        } else if(type == 3){ // dotted
+            if(countDot) {
+                countDot --;
+                glVertex2d(round(x), round(y));
+            } else {
+                countDot ++;
+            }
+        } else { // simple
+            glVertex2d(round(x), round(y));
+        } 
 
         x += xinc;
         y += yinc;
@@ -75,9 +102,29 @@ void display() {
     glEnd();
 
     glPointSize(22);
+
+    //printing simple line
     glColor3d(1.0, 0.5, 0.0);
     glBegin(GL_POINTS);
-        dda(1, 1, 5, 5);
+        dda(1, 1, 15, 15, 1);
+    glEnd();
+
+    // printing dashed line
+    glColor3d(.5, 0.0, 1.0);
+    glBegin(GL_POINTS);
+        dda(4, 1, 18, 15, 2);
+    glEnd();
+
+    // printing dotted line
+    glColor3d(0.5, 1.0, 0.0);
+    glBegin(GL_POINTS);
+        dda(1, 4, 15, 18, 3);
+    glEnd();
+
+    // printing solid line
+    glColor3d(.2, 0.1, 0.0);
+    glBegin(GL_POINTS);
+        dda(1, 8, 11, 18, 4);
     glEnd();
 
     glFlush();
@@ -90,7 +137,7 @@ int main(int argc, char** argv) {
     glutInitWindowPosition(200,200);
     glutInitWindowSize(500,500);
 
-    glutCreateWindow("DDA - Digital Differential Analizer");
+    glutCreateWindow("Bresenham Line Generation Algorithm");
 
     glutDisplayFunc(display);
 
