@@ -11,7 +11,7 @@ void drawCirclet(double x, double y, double r)
     double xi = 0;
     double yi = r;
     double circumferece = 2 * 3.14 * r;
-    double diameters    = circumferece / 50; // change it according needded count of circles
+    double diameters = circumferece / 50; // change it according needded count of circles
     double circleRadious = diameters / 2;
 
     // displyaing some points
@@ -24,46 +24,48 @@ void drawCirclet(double x, double y, double r)
     // glFlush();
 
     double D = 3 - 2 * r;
-    double circumference = 2 * 3.14 * r;
-    cout<<circumference;
 
-    drawCircle((x+xi), (y+yi), circleRadious);
-    drawCircle((x+yi), (y+xi), circleRadious);
+    drawCircle((x + xi), (y + yi), circleRadious);
+    drawCircle((x + yi), (y + xi), circleRadious);
 
     // 4th quadrant
-    drawCircle((x+yi), (y-xi), circleRadious);
-    drawCircle((x+xi), (y-yi), circleRadious);
+    drawCircle((x + yi), (y - xi), circleRadious);
+    drawCircle((x + xi), (y - yi), circleRadious);
 
     // 3rd quadrant
-    drawCircle((x-yi), (y-xi), circleRadious);
-    drawCircle((x-xi), (y-yi), circleRadious);
+    drawCircle((x - yi), (y - xi), circleRadious);
+    drawCircle((x - xi), (y - yi), circleRadious);
 
     // 2nd quadrant
-    drawCircle((x-yi), (y+xi), circleRadious);
-    drawCircle((x-xi), (y+yi), circleRadious);
+    drawCircle((x - yi), (y + xi), circleRadious);
+    drawCircle((x - xi), (y + yi), circleRadious);
     int counter = 0;
 
     while (xi <= yi)
     {
-        if(counter <= diameters){
-            counter ++;
-        } else {
+        diameters = diameters - 0.05;
+        if (counter <= diameters)
+        {
+            counter++;
+        }
+        else
+        {
             // drawCircle(x+xi, y+yi, circleRadious);
-             // 1st quadrant
-            drawCircle((x+xi), (y+yi), circleRadious);
-            drawCircle((x+yi), (y+xi), circleRadious);
+            // 1st quadrant
+            drawCircle((x + xi), (y + yi), circleRadious);
+            drawCircle((x + yi), (y + xi), circleRadious);
 
             // 4th quadrant
-            drawCircle((x+yi), (y-xi), circleRadious);
-            drawCircle((x+xi), (y-yi), circleRadious);
+            drawCircle((x + yi), (y - xi), circleRadious);
+            drawCircle((x + xi), (y - yi), circleRadious);
 
             // 3rd quadrant
-            drawCircle((x-yi), (y-xi), circleRadious);
-            drawCircle((x-xi), (y-yi), circleRadious);
+            drawCircle((x - yi), (y - xi), circleRadious);
+            drawCircle((x - xi), (y - yi), circleRadious);
 
             // 2nd quadrant
-            drawCircle((x-yi), (y+xi), circleRadious);
-            drawCircle((x-xi), (y+yi), circleRadious);
+            drawCircle((x - yi), (y + xi), circleRadious);
+            drawCircle((x - xi), (y + yi), circleRadious);
 
             counter = 0;
         }
@@ -89,21 +91,21 @@ void drawCirclet(double x, double y, double r)
 void printPointt(double xi, double yi, double x, double y)
 {
     glBegin(GL_POINTS);
-        // 1st quadrant
-        glVertex2f(round(x+xi), round(y+yi));
-        glVertex2f(round(x+yi), round(y+xi));
+    // 1st quadrant
+    glVertex2f(round(x + xi), round(y + yi));
+    glVertex2f(round(x + yi), round(y + xi));
 
-        // 4th quadrant
-        glVertex2f(round(x+yi), round(y-xi));
-        glVertex2f(round(x+xi), round(y-yi));
+    // 4th quadrant
+    glVertex2f(round(x + yi), round(y - xi));
+    glVertex2f(round(x + xi), round(y - yi));
 
-        // 3rd quadrant
-        glVertex2f(round(x-yi), round(y-xi));
-        glVertex2f(round(x-xi), round(y-yi));
+    // 3rd quadrant
+    glVertex2f(round(x - yi), round(y - xi));
+    glVertex2f(round(x - xi), round(y - yi));
 
-        // 2nd quadrant
-        glVertex2f(round(x-yi), round(y+xi));
-        glVertex2f(round(x-xi), round(y+yi));
+    // 2nd quadrant
+    glVertex2f(round(x - yi), round(y + xi));
+    glVertex2f(round(x - xi), round(y + yi));
     glEnd();
     glFlush();
 }
@@ -115,51 +117,56 @@ int cx = 350, cy = 350, cr = 300;
 
 void mouseClick(int button, int state, int x, int y)
 {
-    if(button == GLUT_LEFT_BUTTON) {
-        if(state == GLUT_DOWN) { // getting x,y point on mouseBtnPresse
+    if (button == GLUT_LEFT_BUTTON)
+    {
+        if (state == GLUT_DOWN)
+        { // getting x,y point on mouseBtnPresse
             glPointSize(2);
-            glColor3f(0,0,0);
+            glColor3f(0, 0, 0);
             cx = x, cy = 700 - y;
-        } 
+        }
 
-        if(state == GLUT_UP) { // getting radious on mouseBtnRelease
+        if (state == GLUT_UP)
+        { // getting radious on mouseBtnRelease
             glPointSize(1);
-            glColor3f(0,0,1);
+            glColor3f(0, 0, 1);
             cr = sqrt(pow(abs(x - cx), 2) + pow(abs((700 - y) - cy), 2));
         }
 
         glBegin(GL_POINTS);
-            glVertex2i(x, 700 - y);
+        glVertex2i(x, 700 - y);
         glEnd();
-        glFlush();	
-    } 
+        glFlush();
+    }
 }
 
-void menu(int ch) {
+void menu(int ch)
+{
     color originalC = {255, 255, 255};
-    color fillC     = {0, 0, 255};
-    switch(ch) {
-        case 1:
-            drawCirclet(cx, cy, cr);
+    color fillC = {0, 0, 255};
+    switch (ch)
+    {
+    case 1:
+        drawCirclet(cx, cy, cr);
         break;
 
-        case 2:
-            seedFill(cx+1, cy, originalC, fillC);
-        break;
-        
-        case 3:
-            init();
+    case 2:
+        seedFill(cx + 1, cy, originalC, fillC);
         break;
 
-        case 4:
-            exit(0);
+    case 3:
+        init();
+        break;
+
+    case 4:
+        exit(0);
         break;
     }
 }
 
 //////////////////////////////////////////
-void display() {
-
+void display()
+{
 }
 
 int main(int argc, char **argv)
@@ -175,20 +182,21 @@ int main(int argc, char **argv)
 
     glutDisplayFunc(display);
 
-	glutMouseFunc(mouseClick);
+    glutMouseFunc(mouseClick);
 
     glutCreateMenu(menu);
-        glutAddMenuEntry("Draw", 1);
-        glutAddMenuEntry("Fill", 2);
-        glutAddMenuEntry("Clear", 3);
-        glutAddMenuEntry("Exit", 4);
-	glutAttachMenu(GLUT_RIGHT_BUTTON);
+    glutAddMenuEntry("Draw", 1);
+    glutAddMenuEntry("Fill", 2);
+    glutAddMenuEntry("Clear", 3);
+    glutAddMenuEntry("Exit", 4);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
 
     glutMainLoop();
     return 1;
 }
 //////////////////////////////////////////
-void init() {
+void init()
+{
     double start = 0.0;
     double end = 700.0;
 

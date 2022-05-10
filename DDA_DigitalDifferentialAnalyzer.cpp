@@ -70,9 +70,9 @@ void renderFunction() {
     glBegin(0);
         glVertex2f(200, 200);
         glVertex2f(100, 100); //1
-	    glVertex2f(-200, 200);
+        glVertex2f(-200, 200);
         glVertex2f(-100, 100); //2
-	    glVertex2f(-200, -200);
+        glVertex2f(-200, -200);
         glVertex2f(-100, -100); //3
         glVertex2f(200, -200);
         glVertex2f(100, -100); //3
