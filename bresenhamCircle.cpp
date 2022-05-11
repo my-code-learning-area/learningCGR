@@ -43,6 +43,7 @@ void drawCircle(double x, double y, double radious) {
         glVertex2d(round(-y), round(x));
         glVertex2d(round(-x), round(y));
     }
+    
 }
 
 void display() {

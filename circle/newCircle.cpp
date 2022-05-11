@@ -143,15 +143,15 @@ void mouseClick(int button, int state, int x, int y)
 void menu(int ch)
 {
     color originalC = {255, 255, 255};
-    color fillC = {0, 0, 255};
+    color fillC = {255, 0, 255};
     switch (ch)
     {
     case 1:
-        drawCirclet(cx, cy, cr);
+        drawCircle(cx, cy, cr);
         break;
 
     case 2:
-        seedFill(cx + 1, cy, originalC, fillC);
+        seedFill(cx + 12, cy, originalC, fillC);
         break;
 
     case 3:
@@ -167,6 +167,13 @@ void menu(int ch)
 //////////////////////////////////////////
 void display()
 {
+    glRasterPos2f(240, 120); // define position on the screen
+    char *string = "Text";
+
+    while (*string)
+    {
+        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *string++);
+    }
 }
 
 int main(int argc, char **argv)

@@ -5,18 +5,20 @@ void drawCircle(double x, double y, double r)
     double xi = 0;
     double yi = r;
 
-    // displyaing some points
-    glBegin(GL_POINTS);
-        glVertex2f(x + xi, y + yi);
-        glVertex2f(x + yi, y + xi);
-        glVertex2f(x - xi, y - yi);
-        glVertex2f(x - yi, y + xi);
-    glEnd();
-    glFlush();
+    // // displyaing some points
+    // glBegin(GL_POINTS);
+    //     glVertex2f(x + xi, y + yi);
+    //     glVertex2f(x + yi, y + xi);
+    //     glVertex2f(x - xi, y - yi);
+    //     glVertex2f(x - yi, y + xi);
+    // glEnd();
+    // glFlush();
 
     double D = 3 - 2 * r;
     while (xi <= yi)
     {
+        printPoint(xi, yi, x, y);
+
         if (D < 0)
         {
             D += 4 * xi + 6;
@@ -29,8 +31,11 @@ void drawCircle(double x, double y, double r)
             yi--;
         }
 
-        printPoint(xi, yi, x, y);
+        for(int i = 0; i < 2000; i++)
+            for(int j = 0; j < 2000; j++) {}        
     }
+    printPoint(xi, yi, x, y);
+
 
     glFlush();
 }
