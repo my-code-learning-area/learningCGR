@@ -3,6 +3,44 @@
 #include<iostream>
 using namespace std;
 
+void init() {
+    int start = -300, end = 300;
+    glPointSize(11);
+    glClearColor(1, 1, 1, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+
+    gluOrtho2D(start, end, start, end);
+
+    {
+        glBegin(GL_LINES);
+        for (int i = start; i <= end; i++)
+        {
+            glColor3d(0.4, 0.8, 1.0);
+            glVertex2d(start, i - .5);
+            glVertex2d(end, i - .5);
+
+            glColor3d(1.0, 0.8, 1.0);
+            glVertex2d(i - .5, start);
+            glVertex2d(i - .5, end);
+        }
+        glEnd();
+
+        // drawing x and y axis
+        glLineWidth(2);
+        glBegin(GL_LINES);
+        glColor3d(0.0, 0.0, 0.0);
+        glVertex2d(0 - .5, start);
+        glVertex2d(0 - .5, end);
+
+        glVertex2d(start, 0 - .5);
+        glVertex2d(end, 0 - .5);
+        glEnd();
+    }
+
+    glFlush();
+}
+
 void rotate(int x, int y, double rotation, int mode) {
     double xr, yr;
     if(mode == 1) { // anti-clockwise
@@ -99,60 +137,23 @@ void rotateOnIT(int x1, int y1, int x2, int y2) {
         glEnd();
         glFlush();
 
-        // for(int i = 0; i < 500; i++)
-        //     for(int j = 0; j < 500; j++) {}
+        for(int i = 0; i < 1000; i++)
+            for(int j = 0; j < 1000; j++) {}
+        //init();
     } 
 }
 
 void display() {
     // lineCircle(10, 13, 20, 20);
 
-    // rotateOnIT(-250, 0, 250, 0);
-    rotateOnIT(50, 50, 250, 250);
+    rotateOnIT(-250, 0, 250, 0);
+    /* rotateOnIT(50, 50, 250, 250);
     rotateOnIT(50, -50, 250, -250);
     rotateOnIT(-50, -50, -250, -250);
     rotateOnIT(-50, 50, -250, 250);
 
-    rotateOnIT(-40, -40, 40, 40);
+    rotateOnIT(-40, -40, 40, 40); */
 
-
-    glFlush();
-}
-
-void init() {
-    int start = -300, end = 300;
-    glPointSize(11);
-    glClearColor(1, 1, 1, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glLoadIdentity();
-
-    gluOrtho2D(start, end, start, end);
-
-    {
-        glBegin(GL_LINES);
-        for (int i = start; i <= end; i++)
-        {
-            glColor3d(0.4, 0.8, 1.0);
-            glVertex2d(start, i - .5);
-            glVertex2d(end, i - .5);
-
-            glColor3d(1.0, 0.8, 1.0);
-            glVertex2d(i - .5, start);
-            glVertex2d(i - .5, end);
-        }
-        glEnd();
-
-        // drawing x and y axis
-        glLineWidth(2);
-        glBegin(GL_LINES);
-        glColor3d(0.0, 0.0, 0.0);
-        glVertex2d(0 - .5, start);
-        glVertex2d(0 - .5, end);
-
-        glVertex2d(start, 0 - .5);
-        glVertex2d(end, 0 - .5);
-        glEnd();
-    }
 
     glFlush();
 }
