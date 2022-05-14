@@ -1,3 +1,19 @@
+void rotate(int x, int y, double rotation, int mode) {
+    double xr, yr;
+    if(mode == 1) { // anti-clockwise
+        xr = (x * cos(rotation)) + (y * (-sin(rotation)));
+        yr = (x * sin(rotation)) + (y * (cos(rotation)));
+
+    } else { // clockwise
+        xr = (x * cos(rotation)) + (y * (sin(rotation)));
+        yr = (x * (-sin(rotation))) + (y * (cos(rotation)));
+    }
+
+    glVertex2d(xr, yr);
+
+    glFlush();
+}
+
 void printPoint(double xi, double yi, double x, double y);
 
 void drawCircle(double x, double y, double r)
@@ -58,6 +74,23 @@ void printPoint(double xi, double yi, double x, double y)
         // 2nd quadrant
         glVertex2f(round(x-yi), round(y+xi));
         glVertex2f(round(x-xi), round(y+yi));
+
+
+        // 1st quadrant
+        rotate(round(x+xi), round(y+yi), 0.3, 1);
+        rotate(round(x+yi), round(y+xi), 0.3, 1);
+
+        // 4th quadrant
+        rotate(round(x+yi), round(y-xi), 0.3, 1);
+        rotate(round(x+xi), round(y-yi), 0.3, 1);
+
+        // 3rd quadrant
+        rotate(round(x-yi), round(y-xi), 0.3, 1);
+        rotate(round(x-xi), round(y-yi), 0.3, 1);
+
+        // 2nd quadrant
+        rotate(round(x-yi), round(y+xi), 0.3, 1);
+        rotate(round(x-xi), round(y+yi), 0.3, 1);
     glEnd();
     glFlush();
 }
