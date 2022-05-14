@@ -69,8 +69,9 @@ void rotateOnIT(int x1, int y1, int x2, int y2) {
         glVertex2d(xx2 + xc, yy2 + yc);
     glEnd();
 
+    for(rotateBy; rotateBy < 6.26; rotateBy += 0.02) {
     // for(rotateBy; rotateBy < 36.26; rotateBy += 0.02) {
-    for(rotateBy; rotateBy < 36.26; rotateBy += 0.3) {
+    // for(rotateBy; rotateBy < 36.26; rotateBy += 0.3) {
         xr1 = (xx1 * cos(rotateBy)) + (yy1 * (-sin(rotateBy)));
         yr1 = (xx1 * sin(rotateBy)) + (yy1 * (cos(rotateBy)));
         xr2 = (xx2 * cos(rotateBy)) + (yy2 * (-sin(rotateBy)));
