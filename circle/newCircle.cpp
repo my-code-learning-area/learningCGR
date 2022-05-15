@@ -6,25 +6,8 @@
 
 using namespace std;
 
-void drawCirclet(double x, double y, double r)
+void drawSmallCircles(double x, double y, double xi, double yi, double circleRadious)
 {
-    double xi = 0;
-    double yi = r;
-    double circumferece = 2 * 3.14 * r;
-    double diameters = circumferece / 50; // change it according needded count of circles
-    double circleRadious = diameters / 2;
-
-    // displyaing some points
-    // glBegin(GL_POINTS);
-    //     glVertex2f(x + xi, y + yi);
-    //     glVertex2f(x + yi, y + xi);
-    //     glVertex2f(x - xi, y - yi);
-    //     glVertex2f(x - yi, y + xi);
-    // glEnd();
-    // glFlush();
-
-    double D = 3 - 2 * r;
-
     drawCircle((x + xi), (y + yi), circleRadious);
     drawCircle((x + yi), (y + xi), circleRadious);
 
@@ -39,34 +22,32 @@ void drawCirclet(double x, double y, double r)
     // 2nd quadrant
     drawCircle((x - yi), (y + xi), circleRadious);
     drawCircle((x - xi), (y + yi), circleRadious);
-    int counter = 0;
+}
+
+void drawCirclet(double x, double y, double r)
+{
+    double xi = 0;
+    double yi = r;
+    double circumferece = 2 * 3.14 * r;
+    double diameters = circumferece / 40; // change it according needded count of circles
+    double circleRadious = diameters / 2;
+
+    double D = 3 - 2 * r;
+
+    drawSmallCircles(x, y, xi, yi, circleRadious);
+    double counter = 0;
+    double counterInc = 0;
 
     while (xi <= yi)
     {
-        diameters = diameters - 0.05;
-        if (counter <= diameters)
+        if (counter < diameters )
         {
-            counter++;
+            counter += 1 + counterInc;
         }
         else
         {
-            // drawCircle(x+xi, y+yi, circleRadious);
-            // 1st quadrant
-            drawCircle((x + xi), (y + yi), circleRadious);
-            drawCircle((x + yi), (y + xi), circleRadious);
-
-            // 4th quadrant
-            drawCircle((x + yi), (y - xi), circleRadious);
-            drawCircle((x + xi), (y - yi), circleRadious);
-
-            // 3rd quadrant
-            drawCircle((x - yi), (y - xi), circleRadious);
-            drawCircle((x - xi), (y - yi), circleRadious);
-
-            // 2nd quadrant
-            drawCircle((x - yi), (y + xi), circleRadious);
-            drawCircle((x - xi), (y + yi), circleRadious);
-
+            drawSmallCircles(x, y, xi, yi, circleRadious);
+            counterInc += 0.065;
             counter = 0;
         }
 
@@ -85,28 +66,6 @@ void drawCirclet(double x, double y, double r)
         // printPoint(xi, yi, x, y);
     }
 
-    glFlush();
-}
-
-void printPointt(double xi, double yi, double x, double y)
-{
-    glBegin(GL_POINTS);
-    // 1st quadrant
-    glVertex2f(round(x + xi), round(y + yi));
-    glVertex2f(round(x + yi), round(y + xi));
-
-    // 4th quadrant
-    glVertex2f(round(x + yi), round(y - xi));
-    glVertex2f(round(x + xi), round(y - yi));
-
-    // 3rd quadrant
-    glVertex2f(round(x - yi), round(y - xi));
-    glVertex2f(round(x - xi), round(y - yi));
-
-    // 2nd quadrant
-    glVertex2f(round(x - yi), round(y + xi));
-    glVertex2f(round(x - xi), round(y + yi));
-    glEnd();
     glFlush();
 }
 
@@ -147,7 +106,7 @@ void menu(int ch)
     switch (ch)
     {
     case 1:
-        drawCircle(cx, cy, cr);
+        drawCirclet(cx, cy, cr);
         break;
 
     case 2:
@@ -167,13 +126,13 @@ void menu(int ch)
 //////////////////////////////////////////
 void display()
 {
-    glRasterPos2f(240, 120); // define position on the screen
-    char *string = "Text";
+    // glRasterPos2f(240, 120); // define position on the screen
+    // char *string = "Text";
 
-    while (*string)
-    {
-        glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *string++);
-    }
+    // while (*string)
+    // {
+    //     glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *string++);
+    // }
 }
 
 int main(int argc, char **argv)

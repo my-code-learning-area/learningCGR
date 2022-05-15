@@ -76,21 +76,21 @@ void printPoint(double xi, double yi, double x, double y)
         glVertex2f(round(x-xi), round(y+yi));
 
 
-        // 1st quadrant
-        rotate(round(x+xi), round(y+yi), 0.3, 1);
-        rotate(round(x+yi), round(y+xi), 0.3, 1);
+        // // 1st quadrant
+        // rotate(round(x+xi), round(y+yi), 0.3, 1);
+        // rotate(round(x+yi), round(y+xi), 0.3, 1);
 
-        // 4th quadrant
-        rotate(round(x+yi), round(y-xi), 0.3, 1);
-        rotate(round(x+xi), round(y-yi), 0.3, 1);
+        // // 4th quadrant
+        // rotate(round(x+yi), round(y-xi), 0.3, 1);
+        // rotate(round(x+xi), round(y-yi), 0.3, 1);
 
-        // 3rd quadrant
-        rotate(round(x-yi), round(y-xi), 0.3, 1);
-        rotate(round(x-xi), round(y-yi), 0.3, 1);
+        // // 3rd quadrant
+        // rotate(round(x-yi), round(y-xi), 0.3, 1);
+        // rotate(round(x-xi), round(y-yi), 0.3, 1);
 
-        // 2nd quadrant
-        rotate(round(x-yi), round(y+xi), 0.3, 1);
-        rotate(round(x-xi), round(y+yi), 0.3, 1);
+        // // 2nd quadrant
+        // rotate(round(x-yi), round(y+xi), 0.3, 1);
+        // rotate(round(x-xi), round(y+yi), 0.3, 1);
     glEnd();
     glFlush();
 }

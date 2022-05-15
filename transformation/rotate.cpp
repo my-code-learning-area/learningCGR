@@ -146,13 +146,13 @@ void rotateOnIT(int x1, int y1, int x2, int y2) {
 void display() {
     // lineCircle(10, 13, 20, 20);
 
-    rotateOnIT(-250, 0, 250, 0);
-    /* rotateOnIT(50, 50, 250, 250);
+    // rotateOnIT(-250, 0, 250, 0);
+    rotateOnIT(50, 50, 250, 250);
     rotateOnIT(50, -50, 250, -250);
     rotateOnIT(-50, -50, -250, -250);
     rotateOnIT(-50, 50, -250, 250);
 
-    rotateOnIT(-40, -40, 40, 40); */
+    rotateOnIT(-40, -40, 40, 40);
 
 
     glFlush();
