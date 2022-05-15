@@ -1,0 +1,27 @@
+start
+
+    step 1: calculate distanceY(dy) and distanceX(dx) of line (|value| should be absolute)
+
+    step 2: calculate x_change and y_change (-1/+1)
+
+    step 3: plot fist pixel
+
+    step 4: if line is horizontal.. draw it and return
+
+    step 5: if line is vertical.. draw it and return
+
+    step 6: if the line is inclient to x axis then-
+        step 6.1: calculate decision parameter by using formule [2dy - dx]
+        step 6.2: if decision parameter is > 0 then increment y and x. increment decision parameter by using formula [2(dy - dx)]
+        step 6.3: if decision parameter is <= 0 then increment x. increment decision parameter by using fornule [2dy]
+        step 6.4: plot the pixel
+        step 6.5: repeate step 6.2 dx times (dx : distance of X: x2 - x1)
+
+    step 7: if the line is inclient to y axis then-
+        step 7.1: calculate decision parameter by using formule [2dx - dy]
+        step 7.2: if decision parameter is > 0 then increment x and y. increment decision parameter by using formula [2(dx - dy)]
+        step 7.3: if decision parameter is <= 0 then increment y. increment decision parameter by using fornule [2dx]
+        step 7.4: plot the pixel
+        step 7.5: repeate step 6.2 dy times (dy : distance of Y: y2 - y1)
+
+end

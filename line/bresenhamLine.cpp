@@ -1,14 +1,4 @@
-/** //// Bresenham Line ////
- * name:   sumit uttamrao kawale
- * rollno: 23358
- * class:  se-11
- * batch:  g-11
- *
- **/
-#include <GL/freeglut.h>
-#include <GL/gl.h>
-#include <iostream>
-#include <cstdlib>
+#include<GL/glut.h>
 #include <cmath>
 using namespace std;
 
@@ -128,8 +118,8 @@ void render_function()
 
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_POINTS);
-	BSA_Algo(0, 0, 200, 0);
-	BSA_Algo(0, 0, 0, 200);
+	BSA_Algo(0, 0, 300, 0);
+	BSA_Algo(0, 0, 0, 300);
 	glEnd();
 	glFlush();
 }
