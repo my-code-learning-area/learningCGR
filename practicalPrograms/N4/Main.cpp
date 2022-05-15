@@ -24,10 +24,10 @@ void fill(int x, int y, color bc, color fc) {
             glVertex2d(x, y);
         glEnd();
         glFlush();
-        fill(x + 1, y + 1, bc, fc);
-        fill(x - 1, y - 51, bc, fc);
-        fill(x - 1, y + 1, bc, fc);
-        fill(x + 1, y - 1, bc, fc);
+        fill(x + 1, y, bc, fc);
+        fill(x - 1, y, bc, fc);
+        fill(x, y + 1, bc, fc);
+        fill(x, y - 1, bc, fc);
     }
 }
 
@@ -63,24 +63,15 @@ void display() {
     init();
     double rotateBy = .5;
     double x1, y1, x2, y2;
-    /* for(int i = 0; i < (sizeof(lines)/sizeof(lines[0])); i++) {
-        x1 = (lines[i][0] * cos(rotateBy)) + (lines[i][1] * (-sin(rotateBy)));
-        y1 = (lines[i][0] * sin(rotateBy)) + (lines[i][1] * (cos(rotateBy)));
-        x2 = (lines[i][2] * cos(rotateBy)) + (lines[i][3] * (-sin(rotateBy)));
-        y2 = (lines[i][2] * sin(rotateBy)) + (lines[i][3] * (cos(rotateBy)));
-        glBegin(GL_LINES);
-            glVertex2d(x1, y1);
-            glVertex2d(x2, y2);
-        glEnd();
-        glFlush();
-    } */
     
-    for(double r = 0; r < .459; r += 0.002){
+    for(double r = 0; r < .45; r += 0.002){
         glClear(GL_COLOR_BUFFER_BIT);
 
         for(int i = 0; i < (sizeof(lines)/sizeof(lines[0])); i++) {
             double xc = 350;
             double yc = 350;
+            /* double xc = lines[i][0] + ((lines[i][2] - lines[i][0]) / 2);
+            double yc = lines[i][1] + ((lines[i][3] - lines[i][1]) / 2); */
             double rotateBy = r;
 
             double xx1 = lines[i][0] - xc;
@@ -104,7 +95,7 @@ void display() {
 
     color bc = {255, 255, 255};
     color fc = {255, 0, 0};
-    fill(350, 350, bc, fc);
+    // fill(350, 350, bc, fc);
 }
 
 int main(int argc, char ** argv) {
