@@ -81,6 +81,10 @@ void lineCircle(int x1, int y1, int x2, int y2) {
     } 
 }
 
+double angle(double x) {
+    return (x * 3.14f) / 180.0f;
+}
+
 void rotateOnIT(int x1, int y1, int x2, int y2) {
     glColor3d(0, 0, 1);
     glLineWidth(1);
@@ -107,13 +111,14 @@ void rotateOnIT(int x1, int y1, int x2, int y2) {
         glVertex2d(xx2 + xc, yy2 + yc);
     glEnd();
 
-    for(rotateBy; rotateBy < 6.26; rotateBy += 0.02) {
+    for(rotateBy; rotateBy < 360; rotateBy += 1) {
+    // for(rotateBy; rotateBy < 6.26; rotateBy += 0.02) {
     // for(rotateBy; rotateBy < 36.26; rotateBy += 0.02) {
     // for(rotateBy; rotateBy < 36.26; rotateBy += 0.3) {
-        xr1 = (xx1 * cos(rotateBy)) + (yy1 * (-sin(rotateBy)));
-        yr1 = (xx1 * sin(rotateBy)) + (yy1 * (cos(rotateBy)));
-        xr2 = (xx2 * cos(rotateBy)) + (yy2 * (-sin(rotateBy)));
-        yr2 = (xx2 * sin(rotateBy)) + (yy2 * (cos(rotateBy)));
+        xr1 = (xx1 * cos(angle(rotateBy))) + (yy1 * (-sin(angle(rotateBy))));
+        yr1 = (xx1 * sin(angle(rotateBy))) + (yy1 * (cos(angle(rotateBy))));
+        xr2 = (xx2 * cos(angle(rotateBy))) + (yy2 * (-sin(angle(rotateBy))));
+        yr2 = (xx2 * sin(angle(rotateBy))) + (yy2 * (cos(angle(rotateBy))));
         
         // xr1 = (xx1 * cos(rotateBy)) + (yy1 * (-sin(rotateBy)));
         // yr1 = (xx1 * sin(rotateBy)) + (yy1 * (cos(rotateBy)));

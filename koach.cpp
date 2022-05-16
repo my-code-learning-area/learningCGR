@@ -23,17 +23,19 @@ void Initialize()
 void draw(int n)
 {
 
-    draw_koch(600, 100, 800, 400, n);
-    draw_koch(800, 400, 400, 400, n);
-    draw_koch(400, 400, 600, 100, n);
+    draw_koch(700, 300, 900, 600, n);
+    draw_koch(900, 600, 500, 600, n);
+    draw_koch(500, 600, 700, 300, n);
 }
 
 void draw_koch(float xa, float ya, float xb, float yb, int n)
 {
     float xc, xd, yc, yd, midx, midy;
 
+    // find 2 points in between a line
     xc = (2 * xa + xb) / 3;
     yc = (2 * ya + yb) / 3;
+    
     xd = (2 * xb + xa) / 3;
     yd = (2 * yb + ya) / 3;
 
@@ -42,26 +44,31 @@ void draw_koch(float xa, float ya, float xb, float yb, int n)
 
     if (n > 0)
     {
+        glColor3d(1, 0, 0);
         draw_koch(xa, ya, xc, yc, n - 1);
+        glColor3d(0, 1, 0);
         draw_koch(xc, yc, midx, midy, n - 1);
+        glColor3d(0, 0, 1);
         draw_koch(midx, midy, xd, yd, n - 1);
+        glColor3d(0, 1, 1);
         draw_koch(xd, yd, xb, yb, n - 1);
     }
 
     else
     {
+        // glColor3d(0, 1, 1);
         glBegin(GL_LINES);
-        glVertex2f(xa, ya);
-        glVertex2f(xc, yc);
+            glVertex2f(xa, ya);
+            glVertex2f(xc, yc);
 
-        glVertex2f(xc, yc);
-        glVertex2f(midx, midy);
+            glVertex2f(xc, yc);
+            glVertex2f(midx, midy);
 
-        glVertex2f(midx, midy);
-        glVertex2f(xd, yd);
+            glVertex2f(midx, midy);
+            glVertex2f(xd, yd);
 
-        glVertex2f(xd, yd);
-        glVertex2f(xb, yb);
+            glVertex2f(xd, yd);
+            glVertex2f(xb, yb);
         glEnd();
         glFlush();
     }

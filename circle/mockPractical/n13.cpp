@@ -38,6 +38,7 @@ void bangleCircle(double x, double y, double r) {
 	double xi = 0, yi = r;
 	double D = 3 - (2 * r);
 	
+
 	// getting diameter and radious of small circles (will print on bangle)
 	double smallDiameter = (2 * 3.14 * r) / 40;
 	double smallRadious = (smallDiameter) / 2;
