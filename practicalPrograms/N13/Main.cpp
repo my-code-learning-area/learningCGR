@@ -78,12 +78,31 @@ double angle(double x) {
     return (x * 3.14f) / 180.0f;
 }
 
+void draw(double x, double y, double radius, double rotateBy, int n) { // will draw recursively
+    if(n < 1) {
+        return;
+    } else {
+        x -= cx;
+        y -= cy;
+        double x2 = (x * cos(angle(rotateBy))) + (-y * sin(angle(rotateBy)));
+        double y2 = (x * sin(angle(rotateBy))) + (y * cos(angle(rotateBy)));
+        x2 += cx;
+        y2 += cy;
+        circle(x2, y2, radius);
+        draw(x2, y2, radius, rotateBy, n-1);
+    }
+}
+
 double drawRotatedCircle() {
     double n = 30;
     // double smallDiameter = (2 * 3.14 * cr) / n;
     double smallDiameter =  2 * cr * cos(angle((180 - (360/n)))/2);
     double x1 = cx + cr, y1 = cy;
-    double midx = x1 - cx;
+
+    draw(x1, y1, smallDiameter/2, 360/n, n); //draw recursively
+
+    // commented will draw it iteratively
+    /* double midx = x1 - cx;
     double midy = y1 - cy;
 
     double x2, y2;
@@ -94,7 +113,7 @@ double drawRotatedCircle() {
         x2 += cx;
         y2 += cy;
         circle(x2, y2, smallDiameter/2);
-    }
+    } */
 }
 
 void mouse(int btn, int state, int x, int y) {
