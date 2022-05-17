@@ -1,4 +1,5 @@
 #include<GL/glut.h>
+#include<math.h>
 
 struct line {
     double x1, y1, x2, y2;
@@ -12,6 +13,37 @@ void init() {
     gluOrtho2D(-350, 350, -350, 350);
     glColor3d(0.2, 0.5, 1);
     glFlush();
+}
+
+
+void plotpixel(int x, int y)
+{
+    glBegin(GL_POINTS);
+    glVertex2i(x, y);
+    glEnd();
+    glFlush();
+}
+
+void dda(line l)
+{
+    int x1 = l.x1, y1 = l.y1, x2 = l.x2, y2=l.y2;
+	int dx = x2 - x1;
+	int dy = y2 - y1;
+
+	float step = fmax(abs(dx), abs(dy));
+
+	float xin = dx / step;
+	float yin = dy / step;
+
+	float x = x1;
+	float y = y1;
+
+	for(int i =0;i<step;i++)
+	{
+		plotpixel((int)x, (int)y);
+		x += xin;
+		y += yin;
+	}
 }
 
 void bresenhamLine(line l) {
@@ -92,67 +124,67 @@ void display() {
 
     // 1st quadrant
     line f1 = {50, 200, 50, 50};
-    bresenhamLine(f1);
+    dda(f1);
     
     line f2 = {200, 50, 50, 50};
-    bresenhamLine(f2);
+    dda(f2);
 
     line f3 = {200, 200, 50, 50};
-    bresenhamLine(f3);
+    dda(f3);
     
     line f4 = {150, 200, 50, 50};
-    bresenhamLine(f4);
+    dda(f4);
     
     line f5 = {200, 150, 50, 50};
-    bresenhamLine(f5);
+    dda(f5);
     
     // 2nd quadrant
     line s1 = {-50, 200, -50, 50};
-    bresenhamLine(s1);
+    dda(s1);
     
     line s2 = {-200, 50, -50, 50};
-    bresenhamLine(s2);
+    dda(s2);
 
     line s3 = {-200, 200, -50, 50};
-    bresenhamLine(s3);
+    dda(s3);
     
     line s4 = {-150, 200, -50, 50};
-    bresenhamLine(s4);
+    dda(s4);
     
     line s5 = {-200, 150, -50, 50};
-    bresenhamLine(s5);
+    dda(s5);
     
     // 3rd quadrant
     line t1 = {-50, -200, -50, -50};
-    bresenhamLine(t1);
+    dda(t1);
     
     line t2 = {-200, -50, -50, -50};
-    bresenhamLine(t2);
+    dda(t2);
 
     line t3 = {-200, -200, -50, -50};
-    bresenhamLine(t3);
+    dda(t3);
     
     line t4 = {-150, -200, -50, -50};
-    bresenhamLine(t4);
+    dda(t4);
     
     line t5 = {-200, -150, -50, -50};
-    bresenhamLine(t5);
+    dda(t5);
     
     // 4th quadrant
     line l1 = {50, -200, 50, -50};
-    bresenhamLine(l1);
+    dda(l1);
     
     line l2 = {200, -50, 50, -50};
-    bresenhamLine(l2);
+    dda(l2);
 
     line l3 = {200, -200, 50, -50};
-    bresenhamLine(l3);
+    dda(l3);
     
     line l4 = {150, -200, 50, -50};
-    bresenhamLine(l4);
+    dda(l4);
     
     line l5 = {200, -150, 50, -50};
-    bresenhamLine(l5);
+    dda(l5);
 
     glFlush();
 }

@@ -90,17 +90,7 @@ void display() {
 	glFlush();
 
     int tx, ty, r;
-	/* cout<<"Enter tx and ty : ";
-	cin>>tx>>ty;
-	transform[0][0] = 1;
-	transform[0][1] = 0;
-	transform[0][2] = 0;
-	transform[1][0] = 0;
-	transform[1][1] = 1;
-	transform[1][2] = 0;
-	transform[2][0] = tx;
-	transform[2][1] = ty;
-	transform[2][2] = 1; */
+
 
     /* // cout<<"Enter rotation angle: ";
     // cin>>tx;
