@@ -95,7 +95,7 @@ void display() {
 
     color bc = {255, 255, 255};
     color fc = {255, 0, 0};
-    // fill(350, 350, bc, fc);
+    fill(350, 350, bc, fc);
 }
 
 int main(int argc, char ** argv) {
