@@ -27,17 +27,23 @@ void plotpixel(int x, int y)
 void dda(line l)
 {
     int x1 = l.x1, y1 = l.y1, x2 = l.x2, y2=l.y2;
+
+
 	int dx = x2 - x1;
 	int dy = y2 - y1;
+    // calculate dx and dy [dx = x2 - x1; dy = y2 - y1]
 
 	float step = fmax(abs(dx), abs(dy));
+    // calculate steps [steps = |dx| > |dy| ? |dx| : |dy|]
 
 	float xin = dx / step;
 	float yin = dy / step;
+    // calculate xincrement and yincrement by using formula [xincrement = dx / steps] [yincrement = dy / steps]
 
 	float x = x1;
 	float y = y1;
 
+    // print pixel and increment x,y by xincrement and yincrement steps times
 	for(int i =0;i<step;i++)
 	{
 		plotpixel((int)x, (int)y);

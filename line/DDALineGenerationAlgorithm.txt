@@ -1,0 +1,7 @@
+step 1: calculate dx and dy [dx = x2 - x1; dy = y2 - y1]
+
+step 2: calculate steps [steps = |dx| > |dy| ? |dx| : |dy|]
+
+step 3: calculate xincrement and yincrement by using formula [xincrement = dx / steps] [yincrement = dy / steps]
+
+step 4: print pixel and increment x,y by xincrement and yincrement steps times
