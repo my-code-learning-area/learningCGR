@@ -78,19 +78,23 @@ double angle(double x) {
     return (x * 3.14f) / 180.0f;
 }
 
-double drawRotatedCircle(double x, double y, double r, double diameter, double rotateBy) {
-    double smallR = diameter/2;
+double drawRotatedCircle() {
+    double n = 30;
+    // double smallDiameter = (2 * 3.14 * cr) / n;
+    double smallDiameter =  2 * cr * cos(angle((180 - (360/n)))/2);
+    double x1 = cx + cr, y1 = cy;
+    double midx = x1 - cx;
+    double midy = y1 - cy;
 
-    double tx = x - (x + r + smallR);
-    double ty = 0;
+    double x2, y2;
+    for(double r = 0; r < 360; r += 360/n) {
+        x2 = (midx * cos(angle(r))) + (-midy * sin(angle(r)));
+        y2 = (midx * sin(angle(r))) + (midy * cos(angle(r)));
 
-    double rx = (tx * cos(rotateBy)) + (ty * (-sin(rotateBy)));
-    double ry = (tx * sin(rotateBy)) + (ty * (cos(rotateBy)));
-
-    rx += (x + r + smallR);
-    ry += y;
-
-    circle(rx, ry, smallR);
+        x2 += cx;
+        y2 += cy;
+        circle(x2, y2, smallDiameter/2);
+    }
 }
 
 void mouse(int btn, int state, int x, int y) {
@@ -112,13 +116,11 @@ void mouse(int btn, int state, int x, int y) {
             glEnd();
             glFlush();
             cout<<endl<<"got the points"<<endl;
-            circle(cx, cy, cr);
+            double smallDiameter = (2 * 3.14 * cr) / 30;
 
-            double smallDiameter = (2 * 3.14 * cr)/ 20;
-
-            for(double i = 0; i < 360; i+= (360 / smallDiameter)) {
-                drawRotatedCircle(x, cy, cr, smallDiameter, angle(i));
-            }
+            circle(cx, cy, cr-(smallDiameter/2));
+            circle(cx, cy, cr-2*(smallDiameter/2));
+            drawRotatedCircle();
         }
     } else { // btn == GLUT_RIGHT_BUTTON
         color bc = {255, 255, 255};
